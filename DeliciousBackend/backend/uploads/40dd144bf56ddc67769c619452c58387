@@ -1,0 +1,249 @@
+[
+    {
+        "link": "",
+        "title": "Appetizers",
+        "id": "appetizer",
+        "items": [
+            {
+                "dishname": "Mini Salmon & Herb Tartlets",
+                "link": "https://i.postimg.cc/gcgXWMVq/appetizer1.jpg",
+                "description": "Mini tartlets topped with creamy avocado spread, smoked salmon, and a sprig of fresh microgreens."
+            },
+            {
+                "dishname": "Tomato & Basil Bliss",
+                "link": "https://i.postimg.cc/65S87y18/appetizer2.jpg",
+                "description": "Toasted bread topped with a vibrant mix of diced tomatoes and fresh basil."
+            },
+            {
+                "dishname": "The Coastal Crunch Platter",
+                "link": "https://i.postimg.cc/4yxYctg9/appetizer3.jpg",
+                "description": "Toasted bread, adorned with fresh tomato, basil, crab, avocado, and a touch of balsamic glaze."
+            },
+            {
+                "dishname": "Honey Chilli Paneer",
+                "link": "https://i.postimg.cc/0yY98jgR/honey-chilli-paneer.jpg",
+                "description": "A flavorful combination of crispy paneer cubes tossed in a sweet and spicy honey-chilli sauce with sesame seeds."
+            },
+            {
+                "dishname": "Achari Paneer Tikka",
+                "link": "https://i.postimg.cc/9QnYQmyb/Achari-Paneer-Tikka.png",
+                "description": "Paneer marinated with tangy pickling spices, grilled to perfection."
+            },
+            {
+                "dishname": "Aloo Tikki Chaat",
+                "link": "https://i.postimg.cc/PJVPQxXF/Aloo-Tikki-chaat.jpg",
+                "description": "Crispy potato patties served with tangy chutneys and curd."
+            },
+            {
+                "dishname": "Dahi Vada",
+                "link": "https://i.postimg.cc/gk3Ch7g3/dahivada.png",
+                "description": "Soft lentil dumplings soaked in creamy yogurt and drizzled with sweet and tangy chutneys."
+            }
+        ]
+    },
+    {
+        "title": "Main Course",
+        "id": "maincourse",
+        "items": [
+            {
+                "dishname": "Flavors of India Thali",
+                "link": "https://i.postimg.cc/xjBk8XZc/maincourse1.jpg",
+                "description": "Indulge in a medley of fragrant curries, fluffy naan, and aromatic rice"
+            },
+            {
+                "dishname": "Paneer Butter Masala with Naan",
+                "link": "https://i.postimg.cc/qMnN3kfQ/maincourse2.jpg",
+                "description": "Creamy Paneer Butter Masala served with fluffy Naan - a classic Indian comfort food."
+            },
+            {
+                "dishname": "Spicy & Tangy Chole Bhature",
+                "link": "https://i.postimg.cc/t4W4YDxc/cholebhature.png",
+                "description": "Savor the ultimate North Indian delight with our irresistibly crispy Bhature and spicy, tangy Chole!"
+            },
+            {
+                "dishname": "Veg Kolhapuri",
+                "link": "https://i.postimg.cc/2SkCSmC1/veg_kolhapuri.jpg",
+                "description": "A spicy and tangy vegetable curry from Maharashtra, served with roti or rice."
+            },
+            {
+                "dishname": "Ratatouille",
+                "link": "https://i.postimg.cc/q7ZJFYVz/Ratatouille.jpg",
+                "description": "A colorful and flavorful vegetable medley from French cuisine, perfect as a healthy main dish."
+            },
+            {
+                "dishname": "Veg Lasagna",
+                "link": "https://i.postimg.cc/K80xKVYJ/Veg_Lasagna.png",
+                "description": "Layers of pasta, cheesy béchamel sauce, and seasoned veggies for a comforting dish."
+            },
+            {
+                "dishname": "Veg Biryani",
+                "link": "https://i.postimg.cc/0Nrx7fMx/Vegetable_Biryani.jpg",
+                "description": "Aromatic basmati rice cooked with spiced vegetables and served with raita."
+            },
+            {
+                "dishname": "Palak Paneer",
+                "link": "https://i.postimg.cc/VLy613St/Palak-paneer.jpg",
+                "description": "Cottage cheese cubes simmered in a vibrant, creamy spinach-based gravy."
+            },
+            {
+                "dishname": "Dal Makhani",
+                "link": "https://i.postimg.cc/7LNPN6XM/Dal-Makhani.jpg",
+                "description": "A rich, creamy lentil dish cooked with butter, cream, and a blend of spices."
+            },
+            {
+                "dishname": "Baingan Bharta",
+                "link": "https://i.postimg.cc/9Fz4FG13/Baingan-Bharta.png",
+                "description": "Smoked eggplant mashed with spices and cooked with onions and tomatoes."
+            },
+            {
+                "dishname": "Bhindi Masala",
+                "link": "https://i.postimg.cc/ZYsRgWmw/Bhindi-Masala.png",
+                "description": "Stir-fried okra cooked with onions, tomatoes, and aromatic spices for a homey delight."
+            }
+        ]
+    },
+    {
+        "title": "Fast Food",
+        "id": "fastfood",
+        "items": [
+            {
+                "dishname": "Enchanting Pizza Palette",
+                "link": "https://i.postimg.cc/jS0s0NF4/fastfood1.jpg",
+                "description": "Our stone-oven-fresh pizza topped with colorful ingredients, melted cheese, and a perfectly baked crust!"
+            },
+            {
+                "dishname": "Herb-Infused Garlic Crunch",
+                "link": "https://i.postimg.cc/KYmx4bFK/fastfood2.jpg",
+                "description": "Indulge in the irresistible crunch of Herb-Infused Garlic, a flavorful blend of robust herbs and savory garlic"
+            },
+            {
+                "dishname": "Savory Fusion Burger",
+                "link": "https://i.postimg.cc/xdgYzZT6/fastfood3.jpg",
+                "description": "A harmonious blend of flavors, combining juicy patty, crispy bacon, melted cheese, and a hint of spice and creaminess."
+            },
+            {
+                "dishname": "Paneer Frankie",
+                "link": "https://i.postimg.cc/Kc3z6ZYF/Paneer-Frankie.png",
+                "description": "A crispy wrap filled with spicy paneer, crunchy veggies, and tangy sauces."
+            },
+            {
+                "dishname": "Pav Bhaji",
+                "link": "https://i.postimg.cc/HLLWBmNq/Pav-bhaji.jpg",
+                "description": "A spicy vegetable mash served with soft pav (bread rolls)."
+            },
+            {
+                "dishname": "Veg Hakka Noodles",
+                "link": "https://i.postimg.cc/65L9KTxs/Veg_Hakka_Noodles.jpg",
+                "description": "Stir-fried noodles with a mix of colorful veggies and soy sauce."
+            },
+            {
+                "dishname": "Chilli Garlic Noodles",
+                "link": "https://i.postimg.cc/9FvfmsrT/Chilli-Garlic-Noodles.png",
+                "description": "Spicy, stir-fried noodles with a bold garlic flavor."
+            },
+            {
+                "dishname": "Tandoori Momos",
+                "link": "https://i.postimg.cc/gj3Gn2wZ/Tandoori-momos.png",
+                "description": "Juicy dumplings marinated in smoky tandoori spices and grilled to perfection."
+            },
+            {
+                "dishname": "Masala Dosa",
+                "link": "https://i.postimg.cc/CKM5XkR6/Masala-Dosa.png",
+                "description": "A crispy rice crepe filled with spiced potato masala, served with coconut chutney and sambar."
+            }
+        ]
+    },
+    {
+        "title": "Beverages",
+        "id": "beverages",
+        "items": [
+            {
+                "dishname": "Berry Herb Infusion",
+                "link": "https://i.postimg.cc/W4mzfSpZ/beverage1.jpg",
+                "description": "A refreshing blend of red berries and fresh herbs, served over ice with a pineapple garnish"
+            },
+            {
+                "dishname": "Minty Citrus Delight",
+                "link": "https://i.postimg.cc/Jn10wJt2/beverage2.jpg",
+                "description": "A refreshing blend of fresh mint and citrus, served over crushed ice for a cool and revitalizing experience with every sip"
+            },
+            {
+                "dishname": "Strawberry Lime Sparkler",
+                "link": "https://i.postimg.cc/sXwX3XhD/beverage3.jpg",
+                "description": "A sparkling combination of sweet strawberries and zesty lime, topped with fresh mint and served over ice"
+            },
+            {
+                "dishname": "Masala Chai",
+                "link": "https://i.postimg.cc/FR7Rsvgy/masalachai.jpg",
+                "description": "A sparkling combination of sweet strawberries and zesty lime, topped with fresh mint and served over ice"
+            },
+            {
+                "dishname": "Nimbu Paani",
+                "link": "https://i.postimg.cc/W49zvzrp/Nimbu-paani.png",
+                "description": "Refreshing lemon water with a hint of salt, sugar, and cumin."
+            },
+            {
+                "dishname": "Thandai",
+                "link": "https://i.postimg.cc/cHgxGm0T/Thandai.png",
+                "description": "A cool, spiced milk drink made with nuts, seeds, and cardamom."
+            },
+            {
+                "dishname": "Chaas",
+                "link": "https://i.postimg.cc/8PF5VTPN/Chaas.png",
+                "description": "Cool, spiced yogurt drink, perfect for a refreshing taste."
+            }
+        ]
+    },
+    {
+        "title": "Desserts",
+        "id": "desserts",
+        "items": [
+            {
+                "dishname": "Strawberry Layers",
+                "link": "https://i.postimg.cc/3RSKPcsk/dessert1.jpg",
+                "description": "Delicate layers of flaky pastry, fresh strawberries, and creamy filling combine to create a light and delicious treat."
+            },
+            {
+                "dishname": "Creamy Berry Delight",
+                "link": "https://i.postimg.cc/T1KRGcxC/dessert2.jpg",
+                "description": "A smooth and creamy panna cotta topped with sweet, juicy strawberries, offering a refreshing and delightful taste experience."
+            },
+            {
+                "dishname": "Chocolaty Caramel Dream",
+                "link": "https://i.postimg.cc/KjCmYgvF/dessert3.jpg",
+                "description": "A rich brownie topped with ice cream, drizzled with caramel and chocolate sauce—a decadent dream in every bite."
+            },
+            {
+                "dishname": "Gulab Jamun",
+                "link": "https://i.postimg.cc/7PRH9j1c/Gulab-jamun.png",
+                "description": "A soft and syrupy Indian dessert made with milk solids and infused with a hint of rose and cardamom."
+            },
+            {
+                "dishname": "Rasgulla",
+                "link": "https://i.postimg.cc/kgsXQGTN/Rasgulla.png",
+                "description": "Soft and spongy cheese balls soaked in sweet sugar syrup—a classic Bengali dessert."
+            },
+            {
+                "link": "https://i.postimg.cc/K82R7dxb/Mango-cheesecake.png",
+                "dishname": "Mango Cheesecake",
+                "description": "A creamy mango-infused cheesecake with a buttery biscuit crust, topped with fresh mango slices."
+            },
+            {
+                "link": "https://i.postimg.cc/qMdkWyYX/Vanilla-Bean-Cheesecake.png",
+                "dishname": "Vanilla Bean Cheesecake",
+                "description": "Classic cheesecake made with rich cream cheese, infused with aromatic vanilla bean, and topped with whipped cream."
+            },
+            {
+                "link": "https://i.postimg.cc/v8nYP3PZ/Tiramisu.png",
+                "dishname": "Tiramisu",
+                "description": "An Italian delight with coffee-soaked ladyfingers, creamy mascarpone layers, and a dusting of cocoa powder."
+            },
+            {
+                "link": "https://i.postimg.cc/Kj3yCv7W/Jalebi.png",
+                "dishname": "Jalebi",
+                "description": "Crispy, syrupy, and sweet fried Indian dessert, best enjoyed hot and freshly made."
+            }
+        ]
+    }
+]
+// https://postimg.cc/gallery/3YKtB7j/30e2a66a

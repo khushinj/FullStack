@@ -19,29 +19,7 @@ mongoose.connect('mongodb://localhost:27017/delicious', {
 
 // Define the Schema for the nested structure
 
-const dataSchema = new mongoose.Schema({
-    title: String,
-    items: [new mongoose.Schema({
-        dishname: String,
-        link: String,
-        description: String,
-    })], // Array of items
-});
 
-// Specify the 'itemdatas' collection explicitly
-const Itemdata = mongoose.model('Itemdata', dataSchema);
-
-// API Routes
-app.get('/', async (req, res) => {
-    try {
-        const categories = await Itemdata.find();
-        console.log(categories);   // Fetch all entries
-        res.json(categories);
-    } catch (error) {
-        console.error("Error fetching categories:", error);
-        res.status(500).json({ message: "Error fetching categories", error });
-    }
-});
 
 
 // Server Start

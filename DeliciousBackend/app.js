@@ -520,8 +520,6 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
-
-
 app.listen(process.env.PORT, (req, res) => {
     console.log(`Server running on ${process.env.PORT}`);
 }); 

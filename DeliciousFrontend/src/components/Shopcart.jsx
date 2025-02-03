@@ -109,7 +109,7 @@ export default function ShoppingCart() {
     const removeOffer = async () => {
         try {
             const UpdateData = await axios.post(`${apiUrl}/cartitems/update-offer`, { isOfferApplied: false }, { headers: { Authorization: `Bearer ${tokenn}` } });
-            console.log(UpdateData.data);
+            // console.log(UpdateData.data);
             setTotalPrice(total);
             setOfferName("None");
             setCondition('');
@@ -151,7 +151,7 @@ export default function ShoppingCart() {
                             if (total > 299) {
                                 try {
                                     const res = await axios.get(`${apiUrl}/menuitem`);
-                                    console.log("response:", res);
+                                    // console.log("response:", res);
                                     const desserts = res.data.filter(item => item.id === 'desserts');
 
                                     const randomDessert = desserts[0]; // Assuming 'desserts' is a category with an array of items
@@ -161,7 +161,7 @@ export default function ShoppingCart() {
                                     }
 
                                     const randomItem = dessertItems[Math.floor(Math.random() * dessertItems.length)];
-                                    console.log("Random Dessert Item:", randomItem);
+                                    // console.log("Random Dessert Item:", randomItem);
 
                                     const hasZeroPriceItem = ItemData.some(item => item.price === 0);
                                     if (hasZeroPriceItem) {
@@ -179,7 +179,7 @@ export default function ShoppingCart() {
                                                     headers: { Authorization: `Bearer ${tokenn}` }
                                                 });
 
-                                                console.log("Dessert added to cart:", postResponse.data);
+                                                // console.log("Dessert added to cart:", postResponse.data);
                                             } catch (error) {
                                                 console.error("Error adding dessert to cart:", error);
                                             }

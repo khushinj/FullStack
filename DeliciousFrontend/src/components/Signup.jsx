@@ -26,7 +26,7 @@ export default function Signup() {
         `${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/signupresult`, // Correct environment variable
         { uname, email, pass } // Send form data as the request body
       );
-      console.log("response:", res.data);
+      // console.log("response:", res.data);
       if (res.data === "Signed up successfully to Delicious!") {
         setresponseMessage(res.data); // Success message
         setresponseColor('success');

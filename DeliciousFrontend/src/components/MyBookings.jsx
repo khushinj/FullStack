@@ -26,7 +26,7 @@ export default function MyBookings() {
                     },
                 });
 
-                console.log(result.data);
+                // console.log(result.data);
                 setBookings(result.data);
             }
         } catch (error) {
@@ -45,7 +45,7 @@ export default function MyBookings() {
                 headers: { Authorization: `Bearer ${token}` },
                 params: { date, time, DiningType },
             });
-            console.log(res.data);
+            // console.log(res.data);
             setShowModal(true);
             setModalErrorMessage(res.data.message);
             fetchBookings();

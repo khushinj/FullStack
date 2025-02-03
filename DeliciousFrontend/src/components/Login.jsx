@@ -23,7 +23,7 @@ export default function Login() {
         e.preventDefault();
         try {
             const res = await axios.post(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/loginresult`, { email, password });
-            console.log('Response:', res.data);
+            // console.log('Response:', res.data);
             if (res.data.message === "Logged in successfully") {
                 localStorage.setItem('token', res.data.token);
                 localStorage.setItem('UserEmail', email);

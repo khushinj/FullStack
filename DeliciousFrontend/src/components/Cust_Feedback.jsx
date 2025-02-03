@@ -18,7 +18,7 @@ export default function CustFeedback() {
             try {
                 const res = await axios.get(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/Fetchfeedback`);
                 setData(res.data.data);
-                console.log(res.data.data);
+                // console.log(res.data.data);
             } catch (error) {
                 console.log("error:", error);
             }

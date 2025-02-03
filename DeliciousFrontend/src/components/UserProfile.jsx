@@ -12,7 +12,7 @@ export default function UserProfile() {
 
     const handleLogout = () => {
         setIsLoggedIn(false);
-        console.log(localStorage.getItem('token'));
+        // console.log(localStorage.getItem('token'));
         localStorage.clear();
     }
 

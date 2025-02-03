@@ -69,7 +69,7 @@ const OrderFormModal = () => {
                             if (total > 299) {
                                 try {
                                     const res = await axios.get(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/menuitem`);
-                                    console.log("response:", res);
+                                    // console.log("response:", res);
                                     const desserts = res.data.filter(item => item.id === 'desserts');
 
                                     const randomDessert = desserts[0]; // Assuming 'desserts' is a category with an array of items
@@ -79,11 +79,11 @@ const OrderFormModal = () => {
                                     }
 
                                     const randomItem = dessertItems[Math.floor(Math.random() * dessertItems.length)];
-                                    console.log("Random Dessert Item:", randomItem);
+                                    // console.log("Random Dessert Item:", randomItem);
 
                                     const hasZeroPriceItem = ItemData.some(item => item.price === 0);
                                     if (hasZeroPriceItem) {
-                                        console.log("Cart contains an item with price 0, skipping dessert addition.");
+                                        // console.log("Cart contains an item with price 0, skipping dessert addition.");
                                     } else {
                                         const postData = async (randomItem) => {
                                             try {
@@ -97,7 +97,7 @@ const OrderFormModal = () => {
                                                     headers: { Authorization: `Bearer ${tokenn}` }
                                                 });
 
-                                                console.log("Dessert added to cart:", postResponse.data);
+                                                // console.log("Dessert added to cart:", postResponse.data);
                                             } catch (error) {
                                                 console.error("Error adding dessert to cart:", error);
                                             }

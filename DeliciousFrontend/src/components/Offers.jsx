@@ -47,7 +47,7 @@ export default function PhotoSlider() {
             const UpdatePrice = async (index) => {
                 try {
                     const response = await axios.post(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/cartitems/update-offerNum`, { offerNum1: index }, { headers: { Authorization: `Bearer ${token}` } });
-                    console.log("Update price response:", response);
+                    // console.log("Update price response:", response);
                 }
                 catch (err) {
                     console.log("Error while updating price:", err);
@@ -56,17 +56,17 @@ export default function PhotoSlider() {
             }
 
             const Fetchedresponse = await axios.get(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/cartitems`, { headers: { Authorization: `Bearer ${token}` } });
-            console.log(Fetchedresponse);
+            // console.log(Fetchedresponse);
 
             if (Fetchedresponse.data.isOfferApplied === false) {
                 const UpdateData = await axios.post(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/cartitems/update-offer`, { isOfferApplied: true }, { headers: { Authorization: `Bearer ${token}` } });
-                console.log(UpdateData.data);
+                // console.log(UpdateData.data);
                 setModalMessage("Offer Applied!");
                 setshowModal(true);
                 UpdatePrice(index);
             }
             else {
-                console.log("Only one offer can be applied at a time!");
+                // console.log("Only one offer can be applied at a time!");
                 setshowModal(true);
                 setofferState(true);
             }

@@ -49,7 +49,7 @@ export default function Menu() {
         const response = async () => {
             try {
                 const res = await axios.get(`${apiUrl}/menuitem`);
-                console.log("response:", res);
+                // console.log("response:", res);
                 setmenuData(res.data);
             }
             catch (error) {
@@ -93,7 +93,7 @@ export default function Menu() {
                     }
                 });
 
-                console.log("items added to cart:", response.data);
+                // console.log("items added to cart:", response.data);
                 setcartItem(response.data);
                 settotalQuantity((prevQuantity) => prevQuantity + itemcounter[item.counter]);
 
@@ -137,7 +137,7 @@ export default function Menu() {
 
     const showSection = (sectionn) => {
         setshowMore(sectionn);
-        console.log(showMore);
+        // console.log(showMore);
     }
 
     const section = menuData.find((section) => section.title === showMore);

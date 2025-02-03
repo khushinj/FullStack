@@ -5,7 +5,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
-const port=process.env.PORT || 5000;
+const port = process.env.PORT || 5000;
 const stripe = require('stripe')("sk_test_51QnJSnRBHdyrqudVIYeU5eC6Xl5FBkg5bapA3yT1IJSpYdntSgh9oROO8zptZCVVL7NJKJgW219TmaD64uSQTWHo00EKufxQAV");
 
 app.use(express.urlencoded({ extended: true }));

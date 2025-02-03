@@ -4,6 +4,9 @@ const cors = require('cors');
 const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
+const secret_key = process.env.SECRET_KEY;
+
+const stripe = require('stripe')("sk_test_51QnJSnRBHdyrqudVIYeU5eC6Xl5FBkg5bapA3yT1IJSpYdntSgh9oROO8zptZCVVL7NJKJgW219TmaD64uSQTWHo00EKufxQAV");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -62,7 +65,6 @@ app.post('/signupresult', async (req, res) => {
     }
 });
 
-const secret_key=process.env.SECRET_KEY;
 
 app.post('/loginresult', async (req, res) => {
     try {
@@ -129,7 +131,7 @@ const CartItem = mongoose.model("CartItem", cartSchema);
 
 app.post('/cart', authenticateToken, async (req, res) => {
     try {
-        const userId = req.user.userId; 
+        const userId = req.user.userId;
         const { img, dishname, description, quantity, price } = req.body;
 
         let userCart = await CartItem.findOne({ userId });
@@ -304,26 +306,28 @@ const FeedbackSchema = new mongoose.Schema({
     name: String,
     label: String,
     feedback: String,
+    image: Number,
 });
 
 const FeedbackData = new mongoose.model("FeedbackData", FeedbackSchema);
 
 app.post('/feedback', async (req, res) => {
-    const { feedback, label, name } = req.body;
+    const { feedback, label, name, image } = req.body;
 
 
-    if (!feedback || !label || !name) {
+    if (!feedback || !label || !name || !image) {
         return res.status(400).send({ message: "All fields are required" });
     }
 
     try {
-        const newData = new FeedbackData({ name, label, feedback });
+        const newData = new FeedbackData({ name, label, feedback, image });
         const saveData = await newData.save();
         res.status(200).send({ message: "Feedback Submitted successfully", data: saveData });
     } catch (error) {
         res.status(500).send({ message: "Error submitting feedback! Please try again later." });
     }
 });
+
 
 app.get('/Fetchfeedback', async (req, res) => {
     try {
@@ -481,6 +485,36 @@ app.delete("/my-reservations", authenticateToken, async (req, res) => {
         return res.status(200).send({ message: "Reservation deleted successfully", data: updatedData });
     } catch (error) {
         return res.status(500).send({ message: "Error deleting reservation", error: error.message });
+    }
+});
+
+
+
+
+
+app.post('/create-checkout-session', async (req, res) => {
+    try {
+        const { amount } = req.body; // Get amount from frontend
+        const session = await stripe.checkout.sessions.create({
+            payment_method_types: ['card'],
+            line_items: [
+                {
+                    price_data: {
+                        currency: 'inr',
+                        product_data: { name: 'Your Order' },
+                        unit_amount: amount, // Amount in cents
+                    },
+                    quantity: 1,
+                },
+            ],
+            mode: 'payment',
+            success_url: 'http://localhost:3000/order-bill',
+            cancel_url: 'http://localhost:3000/payment-cancel',
+        });
+
+        res.json({ id: session.id });
+    } catch (error) {
+        res.status(500).json({ error: error.message });
     }
 });
 

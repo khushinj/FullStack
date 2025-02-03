@@ -1,0 +1,41 @@
+.glassmorphism-container {
+    position: relative;
+    width: 100%;
+    height: 120vh; /* Height of the container */
+    overflow: hidden;
+}
+
+.bgimg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the entire area */
+    filter: blur(2px); /* Increased blur for a more glassy effect */
+    display: block;
+}
+
+.gs {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    backdrop-filter: blur(6.5px); /* Glassmorphism effect */
+    -webkit-backdrop-filter: blur(6.5px); /* Safari compatibility */
+    background: rgba(255, 255, 255, 0.49); /* Semi-transparent background */
+    border-radius: 16px; /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.34); /* Light border */
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.overlay-text {
+    color: #E99907; /* Text color */
+    stroke: black outside; /* Stroke effect (not supported in all browsers) */
+    font-size: 180px; /* Font size */
+    font-weight: bold; /* Font weight */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Shadow for text */
+    text-align: center; /* Center text */
+    margin: 0; /* Remove default margin */
+}

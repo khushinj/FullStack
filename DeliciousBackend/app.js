@@ -524,5 +524,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
 app.listen(port, (req, res) => {
     console.log(`Server running on ${port}`);
-}); 
+});
 
+app.get('/', (req, res) => {
+    res.json("hi khushi");
+})

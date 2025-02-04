@@ -527,7 +527,7 @@ app.listen(port, (req, res) => {
 });
 
 app.get('/', async (req, res) => {
-    res.json("hi khushi");
+    // res.json("hi khushi");
     const data = await userData.find();
     console.log(data);
     res.json(data);

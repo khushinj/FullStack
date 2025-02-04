@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors({
-    origin: 'https://delicious-site.vercel.app',
+    origin: ['http://localhost:3000', 'https://delicious-site.vercel.app'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -23,6 +23,8 @@ mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Error connecting to database :", error);
 });
 
+
+console.log(process.env.DB_URI);
 const userSchema = new mongoose.Schema({
     uname: String,
     email: String,
@@ -523,3 +525,4 @@ app.post('/create-checkout-session', async (req, res) => {
 app.listen(port, (req, res) => {
     console.log(`Server running on ${port}`);
 }); 
+

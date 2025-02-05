@@ -45,9 +45,9 @@ export default function Home() {
                                     <h4 className='glassmorphism px-3' >
                                         <div className="row row-home  mt-xl-5 mt-lg-4 mt-4">
                                             <span className='col-9 ks fs-3 pt-2'>{item.dishname} </span>
-                                            <span className='fw-light col-3 fs-4 pt-2 mt-1'>₹99</span>
+                                            <span className='fw-light col-3 fs-4 pt-2 mt-1'>$5.99</span>
                                         </div>
-                                        <p className='fs-6 fw-normal description-home'>{item.description}</p>
+                                        <p className='fs-6 fw-normal description-home description'>{item.description}</p>
                                     </h4>
                                 </div>
                             )

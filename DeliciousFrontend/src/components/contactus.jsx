@@ -41,12 +41,12 @@ export default function Contactus() {
         <div>
             <div className="container-fluid">
                 <div className="row justify-content-center justify-content-xl-start text-black my-5 py-5">
-                    <div className="col-lg-5 mx-lg-5 my-5 col-11">
-                        <h1 className='ms-5 display-3 fw-semibold'>Contact Us</h1>
-                        <div className="mt-3 col-8 ms-5">
+                    <div className="col-lg-5 mx-lg-5 my-5 col-sm-11">
+                        <h1 className='ms-sm-5 ms-2 display-3 fw-semibold'>Contact Us</h1>
+                        <div className="mt-3 col-8 ms-sm-5 ms-2">
                             <p> Our support team is available around the clock to address any concerns or queries you may have</p>
                         </div>
-                        <div className="info ms-5 mt-4">
+                        <div className="info ms-sm-5 ms-2 mt-4">
                             <h5 className='fw-normal'>support@deliciousapp.com</h5>
                             <h5 className='fw-normal pt-3'>8724179XXX</h5>
                         </div>

@@ -194,11 +194,11 @@ export default function Menu() {
                                                                 <img src={item.link} name="img" alt={item.dishname} className="service-img" />
                                                                 <h4 className="glassmorphism px-3">
                                                                     <div className="maincontent">
-                                                                        <div className="row row1">
+                                                                        <div className="row row11">
                                                                             <span className="col-9 fs-3 pt-2 ks" name='dishname' >{item.dishname}</span>
                                                                             <span className="col-3 fs-4 pt-2 mt-1" name='price'> ₹{item.price} </span>
                                                                         </div>
-                                                                        <p className="fs-6 fw-normal description mb-4">{item.description}</p>
+                                                                        <p className="fs-6 fw-normal description descriptionn mb-4">{item.description}</p>
                                                                     </div>
                                                                 </h4>
 
@@ -255,11 +255,11 @@ export default function Menu() {
                                                             <img src={item.link} name="img" alt={item.dishname} className='service-img' />
                                                             <h4 className='glassmorphism px-3'>
                                                                 <div className="maincontent">
-                                                                    <div className="row row1">
+                                                                    <div className="row row11">
                                                                         <span className='col-9 fs-3 pt-2 ks' name="dishname">{item.dishname} </span>
                                                                         <span className='col-3 fs-4 pt-2 mt-1' name="price"> ₹{item.price} </span>
                                                                     </div>
-                                                                    <p className='fs-6 fw-normal description mb-4'>{item.description}</p>
+                                                                    <p className='fs-6 fw-normal description descriptionn mb-4'>{item.description}</p>
                                                                 </div>
                                                             </h4>
 

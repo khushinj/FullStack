@@ -109,7 +109,8 @@ export default function ShoppingCart() {
     const removeOffer = async () => {
         try {
             const UpdateData = await axios.post(`${apiUrl}/cartitems/update-offer`, { isOfferApplied: false }, { headers: { Authorization: `Bearer ${tokenn}` } });
-            // console.log(UpdateData.data);
+            // console.log(UpdateData.data.cart.isOfferApplied);
+            setOfferApplied(UpdateData.data.cart.isOfferApplied)
             setTotalPrice(total);
             setOfferName("None");
             setCondition('');

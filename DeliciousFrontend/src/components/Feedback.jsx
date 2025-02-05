@@ -29,7 +29,7 @@ export default function Feedback() {
                 `${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/feedback`,
                 { feedback, label, name, image: selectedImageIndex }
             );
-            // console.log("Response:", response.data);
+            console.log("Response:", response.data);
         } catch (error) {
             console.log("ERR:", error);
         }

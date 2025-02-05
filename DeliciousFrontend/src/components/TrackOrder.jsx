@@ -17,7 +17,7 @@ export default function TrackOrder() {
     useEffect(() => {
         const timer = setTimeout(() => {
             setCurrentStep((prevStep) => (prevStep + 1) % OrderInfo.length);
-        }, 9000);
+        }, 29000);
 
         return () => clearTimeout(timer);
     }, [currentStep]);

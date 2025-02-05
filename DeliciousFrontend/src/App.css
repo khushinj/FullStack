@@ -228,15 +228,91 @@ body {
   border-bottom-right-radius: 15px;
 }
 
+@media screen and (max-width: 600px) and (min-width:100px) {
+  .glassmorphism .descriptionn {
+    position: absolute;
+    bottom: 13vh;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .glassmorphism .row11 {
+    position: absolute;
+    margin-bottom: 50vh;
+    height: 38vh;
+    margin-top: -2vh;
+  }
+}
+
+@media screen and (max-width: 1000px) and (min-width:601px) {
+  .glassmorphism .descriptionn {
+    position: absolute;
+    bottom: 13vh;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .glassmorphism .row11 {
+    position: absolute;
+    margin-bottom: 50vh;
+    height: 38vh;
+    margin-top: -3vh;
+  }
+}
+
+@media screen and (min-width:1001px) and (max-width:1200px) {
+  .glassmorphism .descriptionn {
+    position: absolute;
+    bottom: 13vh;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .glassmorphism .row11 {
+    position: absolute;
+    margin-bottom: 50vh;
+    height: 38vh;
+    margin-top: -2vh;
+  }
+}
+
+@media screen and (min-width:1201px) and (max-width:1400px) {
+  .glassmorphism .descriptionn {
+    position: absolute;
+    bottom: 8.5vh;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .glassmorphism .row11 {
+    position: absolute;
+    margin-bottom: 50vh;
+    height: 38vh;
+    margin-top: 2vh;
+  }
+}
+
+
+@media screen and (max-width: 586px) and (min-width:100px) {
+  .glassmorphism .description-home {
+    position: absolute;
+    bottom: 6vh;
+    height: auto;
+    margin-top: 0;
+  }
+
+  .glassmorphism .row-home {
+    position: absolute;
+    margin-bottom: 20vh;
+    height: auto;
+  }
+}
+
 @media screen and (min-width:1400px) {
   .service-container {
     height: 61vh;
     /* width:100%; */
   }
-
-  /* .maincontent {
-    margin-top: 2%;
-  } */
 
   .glassmorphism .row1 {
     height: 5vh;
@@ -270,25 +346,17 @@ body {
 @media screen and (max-width: 1017px) and (min-width: 992px) {
   .glassmorphism .footersection {
     display: flex;
-    /* Enable flexbox layout */
     align-items: center;
-    /* Vertically centers the items */
     justify-content: space-between;
-    /* Spread items evenly */
     flex-wrap: nowrap;
-    /* Prevent wrapping to the next line */
     padding-top: 1rem;
   }
 
   .adc {
     margin-right: 2rem;
-    /* Add margin without causing shrink */
     flex-grow: 0;
-    /* Prevent it from growing */
     flex-shrink: 0;
-    /* Prevent it from shrinking */
     white-space: nowrap;
-    /* Prevent text from wrapping inside the button */
   }
 
 }

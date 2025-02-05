@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Modal from './Modal';
 
-const stripePromise = loadStripe('pk_test_51QnJSnRBHdyrqudVztjucxatANlH1o5Mk0JnmbUOiAZHn24QuLJGDOgBR0C5YjgOdZu26fH2Rno8ljrtb8QMxNqc00F9977s8H');
+const stripePromise = loadStripe("pk_test_51QnJSnRBHdyrqudVztjucxatANlH1o5Mk0JnmbUOiAZHn24QuLJGDOgBR0C5YjgOdZu26fH2Rno8ljrtb8QMxNqc00F9977s8H");
 
 const OrderFormModal = () => {
     const navigate = useNavigate();
@@ -13,8 +14,11 @@ const OrderFormModal = () => {
     const [offerNum, setofferNum] = useState();
     // const [TotalPrice, setAmount] = useState();
     const [ItemData, setItemData] = useState([]);
-
-
+    const [address, setAddress] = useState('');
+    const [contactNumber, setContactNumber] = useState('');
+    const [CustomerName, setCustomerName] = useState();
+    const [showModal, setshowModal] = useState(false);
+    const [ErrorMessage, setErrorMessage] = useState();
 
     const getItemData = async () => {
         try {
@@ -26,10 +30,16 @@ const OrderFormModal = () => {
         }
         catch (error) {
             console.log("Error:", error);
+            setshowModal(true);
+            setErrorMessage(error.response.data.message);
+            if (error.response.data.message === 'Token expired') {
+                localStorage.clear();
+            }
         }
     }
+    // console.log(OfferApplied);
 
-    const total = ItemData.reduce((sum, item) => sum + item.quantity * item.price, 0);
+    const total = ItemData.reduce((sum, item) => sum + item.price * item.quantity, 0);
     const hasPizza = ItemData.filter(item => item.dishname === "Enchanting Pizza Palette");
 
     const hasNimbuPaani = ItemData.filter(item => item.dishname === "Nimbu Paani");
@@ -37,7 +47,6 @@ const OrderFormModal = () => {
     const hasChholeBhature = ItemData.filter(item => item.dishname === "Spicy & Tangy Chole Bhature");
 
     const CalculateDiscount = async () => {
-
         try {
             if (OfferApplied) {
                 switch (offerNum) {
@@ -162,7 +171,9 @@ const OrderFormModal = () => {
                         break;
                 }
             }
-            setAmount(total);
+            else {
+                setAmount(total);
+            }
         }
         catch (err) {
             console.log("Error for offer calculation:", err);
@@ -184,11 +195,15 @@ const OrderFormModal = () => {
         event.preventDefault();
 
         const stripe = await stripePromise;
+        localStorage.setItem("address", address);
+        localStorage.setItem("contactnum", contactNumber);
+        localStorage.setItem("customerName", CustomerName);
+        alert("Enter 4242 4242 4242 4242 as your credit card number");
 
         // Convert amount to paise (1 INR = 100 paise)
         const amountInPaise = amount * 100;
 
-        const { data } = await axios.post('http://localhost:5000/create-checkout-session', { amount: amountInPaise });
+        const { data } = await axios.post(`${process.env.REACT_APP_DELICIOUS_BACKEND_URL}/create-checkout-session`, { amount: amountInPaise });
 
         const result = await stripe.redirectToCheckout({ sessionId: data.id });
 
@@ -201,6 +216,45 @@ const OrderFormModal = () => {
         <div className="container mt-5">
             <h2 className="mb-4">Payment Details</h2>
             <form onSubmit={handlePayment} className="border p-4 rounded shadow-sm">
+
+                <div className="mb-3">
+                    <label className="form-label">Name:</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={CustomerName}
+                        onChange={(e) => setCustomerName(e.target.value)}
+                        placeholder="Enter your name"
+                        required
+                    />
+                </div>
+
+                <div className="mb-3">
+                    <label className="form-label">Contact Number:</label>
+                    <input
+                        type="number"
+                        className="form-control"
+                        value={contactNumber}
+                        onChange={(e) => setContactNumber(e.target.value)}
+                        placeholder="Enter your contact number"
+                        required
+                    />
+                </div>
+
+
+                <div className="mb-3">
+                    <label className="form-label">Address:</label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        placeholder="Enter your address"
+                        required
+                    />
+                </div>
+
+
                 <div className="mb-3">
                     <label className="form-label">Amount (INR):</label>
                     <input
@@ -213,8 +267,16 @@ const OrderFormModal = () => {
 
                 <button type="submit" className="btn btn-success w-100">Pay ₹{amount}</button>
             </form>
+            {
+                showModal && ErrorMessage && (
+                    <Modal title={ErrorMessage} description={"Please try logging in again"} OnModalClose={() => { setshowModal(false) }} />
+                )
+            }
         </div>
+
     );
+
+
 };
 
 export default OrderFormModal;

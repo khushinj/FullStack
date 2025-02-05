@@ -6,13 +6,13 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
 const port = process.env.PORT || 5000;
-const stripe = require('stripe')("sk_test_51QnJSnRBHdyrqudVIYeU5eC6Xl5FBkg5bapA3yT1IJSpYdntSgh9oROO8zptZCVVL7NJKJgW219TmaD64uSQTWHo00EKufxQAV");
+const stripe = require('stripe')(process.env.sk_key);
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://delicious-site.vercel.app'],
+    origin: [`${process.env.FRONTEND_URL}`],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -24,7 +24,6 @@ mongoose.connect(process.env.DB_URI).then(() => {
 });
 
 
-console.log(process.env.DB_URI);
 const userSchema = new mongoose.Schema({
     uname: String,
     email: String,
@@ -311,7 +310,7 @@ const FeedbackSchema = new mongoose.Schema({
     image: Number,
 });
 
-const FeedbackData = new mongoose.model("FeedbackData", FeedbackSchema);
+const feedbackData = new mongoose.model("feedbackData", FeedbackSchema);
 
 app.post('/feedback', async (req, res) => {
     const { feedback, label, name, image } = req.body;
@@ -322,18 +321,18 @@ app.post('/feedback', async (req, res) => {
     }
 
     try {
-        const newData = new FeedbackData({ name, label, feedback, image });
+        const newData = new feedbackData({ name, label, feedback, image });
         const saveData = await newData.save();
         res.status(200).send({ message: "Feedback Submitted successfully", data: saveData });
     } catch (error) {
-        res.status(500).send({ message: "Error submitting feedback! Please try again later." });
+        res.status(500).send({ message: "Error submitting feedback! Please try again later.", error });
     }
 });
 
 
 app.get('/Fetchfeedback', async (req, res) => {
     try {
-        const foundData = await FeedbackData.find();
+        const foundData = await feedbackData.find();
         if (!foundData || foundData.length === 0) {
             return res.status(404).send({ message: "Data not found" });
         }
@@ -510,8 +509,8 @@ app.post('/create-checkout-session', async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: 'http://localhost:3000/order-bill',
-            cancel_url: 'http://localhost:3000/payment-cancel',
+            success_url: `${process.env.FRONTEND_URL}/UserProfile/order-bill`,
+            cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
         });
 
         res.json({ id: session.id });

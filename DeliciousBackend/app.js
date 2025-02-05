@@ -508,8 +508,8 @@ app.post('/create-checkout-session', async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: 'http://localhost:3000/order-bill',
-            cancel_url: 'http://localhost:3000/payment-cancel',
+            success_url: `${process.env.FRONTEND_URL}/order-bill`,
+            cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
         });
 
         res.json({ id: session.id });

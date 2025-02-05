@@ -12,7 +12,8 @@ export default function Signup() {
   const [pass, setpass] = useState('');
   const [responseMessage, setresponseMessage] = useState('');
   const [responseColor, setresponseColor] = useState('');
-
+ const [showModal, setshowModal] = useState(false);
+  
   const navigate = useNavigate();
 
   const Login = () => {
@@ -30,6 +31,7 @@ export default function Signup() {
       if (res.data === "Signed up successfully to Delicious!") {
         setresponseMessage(res.data); // Success message
         setresponseColor('success');
+        setshowModal(true);
         setuname('');
         setpass('');
         setemail('');
@@ -103,8 +105,8 @@ export default function Signup() {
       </div>
 
 
-      {responseMessage === "Signed up successfully to Delicious!" &&
-        <Modal description={"Signed up successfully"} />
+      {showModal && responseMessage  &&
+        <Modal title={"Signed up successfully"} OnModalClose={()=>{setshowModal(false)}} />
       }
     </div >
 

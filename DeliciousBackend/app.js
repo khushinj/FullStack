@@ -12,7 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors({
-    origin: `*`,
+    origin: `${process.env.FRONTEND_URL}`,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -508,7 +508,7 @@ app.post('/create-checkout-session', async (req, res) => {
                 },
             ],
             mode: 'payment',
-            success_url: `${process.env.FRONTEND_URL}/order-bill`,
+            success_url: `${process.env.FRONTEND_URL}/UserProfile/order-bill`,
             cancel_url: `${process.env.FRONTEND_URL}/payment-cancel`,
         });
 

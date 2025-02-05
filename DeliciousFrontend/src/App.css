@@ -294,7 +294,7 @@ body {
 
 .glassmorphism .description-home {
     position: absolute;
-    bottom: 3vh;
+    bottom: 4vh;
     height: auto;
     margin-top: 0;
   }
@@ -315,7 +315,7 @@ body {
 
   .glassmorphism .row-home {
     position: absolute;
-    margin-bottom: 20vh;
+    margin-bottom: 18vh;
     height: auto;
   }
 }

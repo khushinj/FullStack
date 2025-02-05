@@ -17,7 +17,7 @@ export default function Home() {
 
     const specials = [{ img: pastry, dishname: "Raspberry pastry", description: "Layered raspberry cake featuring a perfect balance of moist sponge and tangy raspberry preserves" },
     { img: pancake, dishname: "Honey Pancakes", description: "Fluffy pancakes drizzled with golden honey, topped with fresh banana slices and mint leaves" },
-    { img: mangoshake, dishname: "Mango Smoothie", description: "Creamy mango smoothie featuring ripe mangoes, yogurt, and a hint of citrus" }
+    { img: mangoshake, dishname: "Mango Smoothie", description: "Creamy mango smoothie featuring ripe mangoes, yogurt, and a hint of citrus making it more delicious" }
     ]
 
     return (

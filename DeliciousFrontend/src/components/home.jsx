@@ -42,10 +42,10 @@ export default function Home() {
                             return (
                                 <div key={index} className="service-container homeimg col-xl-3  col-md-8 col-sm-8 mx-xl-5 mx-0 mb-lg-0 mb-5 text-start" data-aos="zoom-in">
                                     <img src={item.img} alt="" className='service-img shadow-lg' />
-                                    <h4 className='glassmorphism px-3 ' >
+                                    <h4 className='glassmorphism px-3' >
                                         <div className="row row-home  mt-xl-5 mt-lg-4 mt-4">
                                             <span className='col-9 ks fs-3 pt-2'>{item.dishname} </span>
-                                            <span className='col-3 fw-light col-3 fs-4 pt-2 mt-1'>₹120</span>
+                                            <span className='fw-light col-3 fs-4 pt-2 mt-1'>₹99</span>
                                         </div>
                                         <p className='fs-6 fw-normal description-home'>{item.description}</p>
                                     </h4>

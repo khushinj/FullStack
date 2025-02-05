@@ -20,6 +20,7 @@ import TrackOrder from './components/TrackOrder.jsx';
 import MyBookings from './components/MyBookings.jsx';
 import Payment from './components/Payment.jsx';
 import PaymentCancel from './components/PaymentCancel.jsx';
+import { Analytics } from "@vercel/analytics/react"
 
 export const countercontext = createContext('');
 export const imgcontext = createContext(0);
@@ -45,6 +46,7 @@ function App() {
       <Router>
         <AuthProvider>
           <totalQuantityContext.Provider value={{ totalQuantity, settotalQuantity }}>
+            <Analytics />
             <Navbar />
             {/* <Elements stripe={stripePromise}>
               <OrderFormModal formCondition={true} closeModal={() => { }} />

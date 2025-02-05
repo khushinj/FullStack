@@ -1016,11 +1016,25 @@ Footer {
   background: linear-gradient(to top, rgba(0, 0, 1, 0.6) 70%, rgba(0, 0, 0, 0));
   bottom: 0%;
   width: 100%;
-  height: 40%;
+  height: 50%;
   color: white;
   padding: 10px;
 }
 
+
+@media screen and (max-width:416px) and (min-width:365px) {
+  .dinein-card-body>.card-text{
+    font-size: 14px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width:365px) {
+  .dinein-card-body>.card-text{
+    font-size: 13px;
+    padding-bottom: 10px;
+  }
+}
 
 
 .dinein-card:hover {

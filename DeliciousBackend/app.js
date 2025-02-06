@@ -7,6 +7,7 @@ require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
 const port = process.env.PORT || 5000;
 const stripe = require('stripe')(process.env.sk_key);
+const bcrypt = require('bcrypt');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -32,7 +33,7 @@ const userSchema = new mongoose.Schema({
 
 const userData = mongoose.model('userData', userSchema);
 
-app.get('/userdata', async (req, res) => {
+app.get('/userdata-delicious_protected', async (req, res) => {
     try {
         const data = await userData.find();
         // console.log(data);
@@ -45,19 +46,18 @@ app.get('/userdata', async (req, res) => {
 
 
 
-
 app.post('/signupresult', async (req, res) => {
     try {
         const { uname, email, pass } = req.body;
-        // console.log(req.body);
+        
         const finddata = await userData.findOne({ email });
         if (finddata) {
             res.send(`Email already exists!`);
-        }
-        else {
-            const newData = new userData({ uname, email, pass });
+        } else {
+            const hashedPassword = await bcrypt.hash(pass, 10);
+            
+            const newData = new userData({ uname, email, pass: hashedPassword });
             await newData.save();
-            // console.log("newdata", newData);
             res.send("Signed up successfully to Delicious!");
         }
     }
@@ -65,6 +65,7 @@ app.post('/signupresult', async (req, res) => {
         res.send("Error Signing up! Check your code");
     }
 });
+
 
 
 app.post('/loginresult', async (req, res) => {
@@ -76,7 +77,8 @@ app.post('/loginresult', async (req, res) => {
             return res.send("Email does not exist");
         }
 
-        if (user.pass !== password) {
+        const isMatch = await bcrypt.compare(password, user.pass);
+        if (!isMatch) {
             return res.send("Error! Incorrect password");
         }
 
@@ -87,6 +89,7 @@ app.post('/loginresult', async (req, res) => {
         res.send("An error occurred while trying to log in");
     }
 });
+
 
 
 const authenticateToken = (req, res, next) => {
@@ -107,7 +110,7 @@ const authenticateToken = (req, res, next) => {
             return res.status(403).send('Invalid Token');
         }
         // console.log('Verified User:', user);
-        res.send('Verified User:', user);
+        // res.send('Verified User:', user);
         req.user = user;
         next();
     });

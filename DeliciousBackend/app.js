@@ -7,7 +7,7 @@ require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
 const port = process.env.PORT || 5002;
 const stripe = require('stripe')(process.env.sk_key);
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

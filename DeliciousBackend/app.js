@@ -5,14 +5,15 @@ const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
-
-const stripe = require('stripe')("sk_test_51QnJSnRBHdyrqudVIYeU5eC6Xl5FBkg5bapA3yT1IJSpYdntSgh9oROO8zptZCVVL7NJKJgW219TmaD64uSQTWHo00EKufxQAV");
+const port = process.env.PORT || 5000;
+const stripe = require('stripe')(process.env.sk_key);
+const bcrypt = require('bcrypt');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors({
-    origin: `${process.env.FRONTEND_URL}`,
+    origin: [`${process.env.FRONTEND_URL}`],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -23,6 +24,7 @@ mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Error connecting to database :", error);
 });
 
+
 const userSchema = new mongoose.Schema({
     uname: String,
     email: String,
@@ -31,32 +33,31 @@ const userSchema = new mongoose.Schema({
 
 const userData = mongoose.model('userData', userSchema);
 
-app.get('/userdata', async (req, res) => {
+app.get('/userdata-delicious_protected', async (req, res) => {
     try {
         const data = await userData.find();
-        console.log(data);
+        // console.log(data);
         res.json(data);
     }
     catch (error) {
-        console.error(error);
+        res.send(error);
     }
 })
-
 
 
 
 app.post('/signupresult', async (req, res) => {
     try {
         const { uname, email, pass } = req.body;
-        console.log(req.body);
+        
         const finddata = await userData.findOne({ email });
         if (finddata) {
             res.send(`Email already exists!`);
-        }
-        else {
-            const newData = new userData({ uname, email, pass });
+        } else {
+            const hashedPassword = await bcrypt.hash(pass, 10);
+            
+            const newData = new userData({ uname, email, pass: hashedPassword });
             await newData.save();
-            console.log("newdata", newData);
             res.send("Signed up successfully to Delicious!");
         }
     }
@@ -64,6 +65,7 @@ app.post('/signupresult', async (req, res) => {
         res.send("Error Signing up! Check your code");
     }
 });
+
 
 
 app.post('/loginresult', async (req, res) => {
@@ -75,7 +77,8 @@ app.post('/loginresult', async (req, res) => {
             return res.send("Email does not exist");
         }
 
-        if (user.pass !== password) {
+        const isMatch = await bcrypt.compare(password, user.pass);
+        if (!isMatch) {
             return res.send("Error! Incorrect password");
         }
 
@@ -88,13 +91,14 @@ app.post('/loginresult', async (req, res) => {
 });
 
 
+
 const authenticateToken = (req, res, next) => {
     const authHeader = req.headers['authorization'];
     const token = authHeader && authHeader.startsWith('Bearer ') ? authHeader.split(' ')[1] : null;
 
     if (!token) {
-        console.log('Access Denied: No Token Provided');
-        return res.status(401).send('Access Denied: No Token');
+        // console.log('Access Denied: No Token Provided');
+        return res.status(401).send('Access Denied: No Token Provided');
     }
 
     jwt.verify(token, secret_key, (err, user) => {
@@ -105,7 +109,8 @@ const authenticateToken = (req, res, next) => {
             }
             return res.status(403).send('Invalid Token');
         }
-        console.log('Verified User:', user);
+        // console.log('Verified User:', user);
+        // res.send('Verified User:', user);
         req.user = user;
         next();
     });
@@ -179,7 +184,7 @@ app.post('/cartitems/update-offer', authenticateToken, async (req, res) => {
 
         res.json({ message: "Cart updated successfully", cart: userCart });
     } catch (error) {
-        console.error("Error updating cart:", error);
+        // console.error("Error updating cart:", error);
         res.status(500).json({ message: "Error updating cart", error });
     }
 });
@@ -201,7 +206,7 @@ app.post('/cartitems/update-offerNum', authenticateToken, async (req, res) => {
 
         res.json({ message: "Cart updated successfully", cart: userCart });
     } catch (error) {
-        console.error("Error updating cart:", error);
+        // console.error("Error updating cart:", error);
         res.status(500).json({ message: "Error updating cart", error });
     }
 });
@@ -211,12 +216,12 @@ app.get('/cartitems/get-offerNum', authenticateToken, async (req, res) => {
         const userId = req.user.userId;
         const response = await CartItem.findOne({ userId });
         if (!response) {
-            console.log("User Id not found");
+            res.json("User Id not found");
         }
         res.json(response);
     }
     catch (err) {
-        console.log("Error", err);
+        res.json("Error", err);
     }
 })
 
@@ -243,7 +248,7 @@ app.get('/cartitems', authenticateToken, async (req, res) => {
         const userId = req.user.userId;
         const response = await CartItem.findOne({ userId });
         if (!response) {
-            console.log("Error fetching items");
+            res.json("Error fetching items");
         }
         res.json(response);
     }
@@ -259,14 +264,14 @@ app.delete('/cartitems/:dishname', authenticateToken, async (req, res) => {
     try {
         const Userexist = await CartItem.findOne({ userId });
         if (!Userexist) {
-            console.log("User does not exist");
+            res.send("User does not exist");
         }
         const deletedItem = await Userexist.cartItems.pull({ dishname });
         await Userexist.save();
         if (!deletedItem) {
             res.send("Item not deleted");
         }
-        console.log("Item deleted successfully");
+        // console.log("Item deleted successfully");
         res.send("Item deleted successfully");
     }
     catch (error) {
@@ -294,7 +299,7 @@ app.post('/contactus', async (req, res) => {
     try {
         const newData = new ContactusData({ fname, lname, email, phone, message });
         const savedData = await newData.save();
-        console.log("Data sent", savedData);
+        // console.log("Data sent", savedData);
         res.status(200).send({ message: "Our team will contact u soon", data: savedData });
     }
     catch (error) {
@@ -309,7 +314,7 @@ const FeedbackSchema = new mongoose.Schema({
     image: Number,
 });
 
-const FeedbackData = new mongoose.model("FeedbackData", FeedbackSchema);
+const feedbackData = new mongoose.model("feedbackData", FeedbackSchema);
 
 app.post('/feedback', async (req, res) => {
     const { feedback, label, name, image } = req.body;
@@ -320,18 +325,18 @@ app.post('/feedback', async (req, res) => {
     }
 
     try {
-        const newData = new FeedbackData({ name, label, feedback, image });
+        const newData = new feedbackData({ name, label, feedback, image });
         const saveData = await newData.save();
         res.status(200).send({ message: "Feedback Submitted successfully", data: saveData });
     } catch (error) {
-        res.status(500).send({ message: "Error submitting feedback! Please try again later." });
+        res.status(500).send({ message: "Error submitting feedback! Please try again later.", error });
     }
 });
 
 
 app.get('/Fetchfeedback', async (req, res) => {
     try {
-        const foundData = await FeedbackData.find();
+        const foundData = await feedbackData.find();
         if (!foundData || foundData.length === 0) {
             return res.status(404).send({ message: "Data not found" });
         }
@@ -360,10 +365,10 @@ const Itemdata = mongoose.model('Itemdata', dataSchema);
 app.get('/menuitem', async (req, res) => {
     try {
         const categories = await Itemdata.find();
-        console.log(categories);
+        // console.log(categories);
         res.json(categories);
     } catch (error) {
-        console.error("Error fetching categories:", error);
+        // console.error("Error fetching categories:", error);
         res.status(500).json({ message: "Error fetching categories", error });
     }
 });
@@ -444,7 +449,7 @@ app.get('/my-reservations', authenticateToken, async (req, res) => {
         }
         res.status(200).json(UserResponse.Reservations);
 
-        console.log(res.Reservations);
+        // console.log(res.Reservations);
     }
     catch (error) {
         res.send({ message: "Error executing the request", error });
@@ -520,6 +525,10 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
-app.listen(process.env.PORT, (req, res) => {
-    console.log(`Server running on ${process.env.PORT}`);
-}); 
+app.listen(port, (req, res) => {
+    console.log(`Server running on ${port}`);
+});
+
+app.get('/', async (req, res) => {
+    res.json("Welcome To Delicious");
+})

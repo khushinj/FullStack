@@ -12,11 +12,19 @@ const bcrypt = require('bcrypt');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
+app.options("", cors({
+    origin: [`${process.env.FRONTEND_URL}`],
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
 app.use(cors({
     origin: [`${process.env.FRONTEND_URL}`],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
+
+
 
 mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Connected to database successfully!");
@@ -49,13 +57,13 @@ app.get('/userdata-delicious_protected', async (req, res) => {
 app.post('/signupresult', async (req, res) => {
     try {
         const { uname, email, pass } = req.body;
-        
+
         const finddata = await userData.findOne({ email });
         if (finddata) {
             res.send(`Email already exists!`);
         } else {
             const hashedPassword = await bcrypt.hash(pass, 10);
-            
+
             const newData = new userData({ uname, email, pass: hashedPassword });
             await newData.save();
             res.send("Signed up successfully to Delicious!");

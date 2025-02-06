@@ -5,7 +5,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5200;
 const stripe = require('stripe')(process.env.sk_key);
 const bcrypt = require('bcrypt');
 

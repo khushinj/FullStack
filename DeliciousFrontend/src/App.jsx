@@ -20,7 +20,9 @@ import TrackOrder from './components/TrackOrder.jsx';
 import MyBookings from './components/MyBookings.jsx';
 import Payment from './components/Payment.jsx';
 import PaymentCancel from './components/PaymentCancel.jsx';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import ReactGA from 'react-ga';
 
 export const countercontext = createContext('');
 export const imgcontext = createContext(0);
@@ -37,6 +39,12 @@ function App() {
     });
   }, []);
 
+
+  useEffect(() => {
+    ReactGA.initialize('G-ZZXCYBSYLQ');
+    ReactGA.pageview(window.location.pathname + window.location.search);
+  }, []);
+
   // const stripePromise = loadStripe('pk_test_51QnJSnRBHdyrqudVztjucxatANlH1o5Mk0JnmbUOiAZHn24QuLJGDOgBR0C5YjgOdZu26fH2Rno8ljrtb8QMxNqc00F9977s8H');
 
 
@@ -47,6 +55,7 @@ function App() {
         <AuthProvider>
           <totalQuantityContext.Provider value={{ totalQuantity, settotalQuantity }}>
             <Analytics />
+            <SpeedInsights />
             <Navbar />
             {/* <Elements stripe={stripePromise}>
               <OrderFormModal formCondition={true} closeModal={() => { }} />

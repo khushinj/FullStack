@@ -5,7 +5,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
-
+const port=process.env.PORT || 5200;
 const stripe = require('stripe')("sk_test_51QnJSnRBHdyrqudVIYeU5eC6Xl5FBkg5bapA3yT1IJSpYdntSgh9oROO8zptZCVVL7NJKJgW219TmaD64uSQTWHo00EKufxQAV");
 
 app.use(express.urlencoded({ extended: true }));
@@ -520,8 +520,8 @@ app.post('/create-checkout-session', async (req, res) => {
 
 
 
-app.listen(process.env.PORT, (req, res) => {
-    console.log(`Server running on ${process.env.PORT}`);
+app.listen(port, (req, res) => {
+    console.log(`Server running on ${port}`);
 }); 
 
 app.listen('/', (req, res) => {

@@ -21,7 +21,7 @@ import MyBookings from './components/MyBookings.jsx';
 import Payment from './components/Payment.jsx';
 import PaymentCancel from './components/PaymentCancel.jsx';
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import ReactGA from 'react-ga';
 
 export const countercontext = createContext('');

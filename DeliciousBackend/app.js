@@ -5,7 +5,7 @@ const app = express();
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 const secret_key = process.env.SECRET_KEY;
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5002;
 const stripe = require('stripe')(process.env.sk_key);
 const bcrypt = require('bcrypt');
 
@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(__dirname));
 app.use(cors({
-    origin: [`${process.env.FRONTEND_URL}`],
+    origin: [`${process.env.FRONTEND_URL}`,'http://localhost:3000'],
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
 }));
@@ -24,7 +24,7 @@ mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Error connecting to database :", error);
 });
 
-
+console.log(process.env.FRONTEND_URL);
 const userSchema = new mongoose.Schema({
     uname: String,
     email: String,

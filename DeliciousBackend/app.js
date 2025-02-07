@@ -24,7 +24,13 @@ mongoose.connect(process.env.DB_URI).then(() => {
     console.log("Error connecting to database :", error);
 });
 
-console.log(process.env.FRONTEND_URL);
+setInterval(() => {
+  fetch("https://delicious-backend-nhly.onrender.com")
+    .then(() => console.log("Keeping backend alive"))
+    .catch((err) => console.error("Keep-alive error:", err));
+}, 30 * 60 * 1000); 
+
+
 const userSchema = new mongoose.Schema({
     uname: String,
     email: String,

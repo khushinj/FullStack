@@ -35,7 +35,7 @@ function App() {
 
 
   useEffect(() => {
-  fetch("https://delicious-backend-nhly.onrender.com/")
+  fetch("https://delicious-backend-nhly.onrender.com")
     .then(() => console.log("Backend is awake"))
     .catch((err) => console.error("Error waking up backend:", err));
 }, []);

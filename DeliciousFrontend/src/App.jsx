@@ -33,6 +33,14 @@ function App() {
 
   const [totalQuantity, settotalQuantity] = useState(0);
 
+
+  useEffect(() => {
+  fetch("https://delicious-backend-nhly.onrender.com/")
+    .then(() => console.log("Backend is awake"))
+    .catch((err) => console.error("Error waking up backend:", err));
+}, []);
+
+
   useEffect(() => {
     AOS.init({
       duration: 1200,

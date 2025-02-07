@@ -61,15 +61,6 @@ export default function Signup() {
           <h1 className="text-center">Create Your Account</h1>
 
           <form className="mt-4" method='post' onSubmit={handleSubmit}>
-            <div className="mb-3">
-              <button className="btn btn-outline-dark w-100 rounded-pill">Signup with Google</button>
-            </div>
-
-            <div className="d-flex align-items-center my-3">
-              <hr className="flex-grow-1" />
-              <span className="mx-2">or</span>
-              <hr className="flex-grow-1" />
-            </div>
 
             <div className="mb-3">
               <label htmlFor="name" className="form-label">Name</label>

@@ -23,7 +23,7 @@ const apiUrl = process.env.REACT_APP_DELICIOUS_BACKEND_URL;
 gsap.registerPlugin(CustomEase);
 
 export default function Menu() {
-    const [itemcounter, setItemcounter] = useState(Array(73).fill(1));
+    const [itemcounter, setItemcounter] = useState(Array(74).fill(1));
     const { setIsLoggedIn } = useContext(AuthContext);
     const [isLoading, setisLoading] = useState(true);
     const [menuData, setmenuData] = useState([]);

@@ -62,11 +62,17 @@ git checkout DeliciousMain
 
 ---
 
-## 🚫 Usage Notice
+---
 
-This repository is part of **Khushi Joshi’s personal project portfolio**.  
-Please **do not copy, reuse, or redistribute any part of the code** without permission.  
-This is not an open-source or collaborative project.
+## 📄 License
+
+**All rights reserved.**
+
+This project is the intellectual property of **Khushi Joshi**.  
+You may **not copy, use, modify, or distribute** any part of this repository without explicit written permission.
+
+© 2024 Khushi Joshi
+
 
 Thank you! 😊
 
